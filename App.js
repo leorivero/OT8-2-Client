@@ -17,28 +17,22 @@ app.get('/login', (req, res) => {
 app.post("/loginback", async (req, res) => {
 try{
   const data = req.body;
- 
- // console.log(data);
    const response = await postData("auth/login",{
     email: data.email,
     password: data.password
   }); 
-  console.log(response.status);
-  if(response.status === 403){
-    alert("ingrese la clave y la contraseña correcta")
-  }
- 
- if(response.data.token){
-  sessionStorage.setItem("token", "Bearer " + response.data.token)
- }
- res.json(response);
+  res.json(response);
 } catch(error){
-  console.log(error)
+  if(error.response.status === 403){
+    res.status(403).json({error: "Puto el que lee"});
+  } else {
+    console.log(error)
+  }
 }
 });
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join( __dirname , 'public' , 'index.html'));
+  res.sendFile(path.join( __dirname , 'public' , 'home.html'));
 });
 
 

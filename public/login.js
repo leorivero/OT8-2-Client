@@ -6,16 +6,19 @@ let correo = document.getElementById("inputEmail");
 let contrasenia = document.getElementById("inputPassword");
 
 buttonLog.addEventListener("click", async () => {
-    console.log("correo 1= " + correo.value);
     try{
-        console.log("correo try")
         const response = await axios.post("/loginback", {
             email: correo.value,
             password: contrasenia.value
             });
-            console.log("correo userEmail=" + userEmail)
-            res.json(response);
+            
+            if(response.status === 200){
+                window.open("http://localhost:3000/", "_self");
+                sessionStorage.setItem("token", "Bearer " + response.data.token);
+            } else if (response.status === 403){
+                alert("0 - Debe ingresar Usuario y Clave Correctas");
+            }
     } catch(error){
-        
+        alert("2 - Debe ingresar Usuario y Clave Correctas");
     }
     });
