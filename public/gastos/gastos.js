@@ -22,23 +22,23 @@ btnSubmit.addEventListener("click", async (e) => {
         token:sessionStorage.getItem("token")
       });
       console.log(response.data);
-      if(response.data.amount){
-        modal.style.display = 'block';
-        var node=document.getElementById("content");
-        node.innerHTML=`
-        <h4 class="modal-title color-success">El pago se realizó correctamente</h4>
-        <p class="info">Transacción: ${response.data.transactionId}</p><br>
-        <p class="info">Monto: AR$ ${response.data.amount}</p><br>
-        <p class="info">Fecha: ${getDate(response.data.creationDate)}</p><br>
-        <p class="info">Descripción: ${response.data.description}</p>
-        <div class="container-button">
-          <button type="submit" class="btn-register return" id="return">
-            Volver
-          </button>
-        </div>`;
-        inputAmount.value=0;
-        inputDescription.value="";
-      }
+      // if(response.data.amount){
+      //   modal.style.display = 'block';
+      //   var node=document.getElementById("content");
+      //   node.innerHTML=`
+      //   <h4 class="modal-title color-success">El pago se realizó correctamente</h4>
+      //   <p class="info">Transacción: ${response.data.transactionId}</p><br>
+      //   <p class="info">Monto: AR$ ${response.data.amount}</p><br>
+      //   <p class="info">Fecha: ${getDate(response.data.creationDate)}</p><br>
+      //   <p class="info">Descripción: ${response.data.description}</p>
+      //   <div class="container-button">
+      //     <button type="submit" class="btn-register return" id="return">
+      //       Volver
+      //     </button>
+      //   </div>`;
+      //   inputAmount.value=0;
+      //   inputDescription.value="";
+      // }
     } catch (error) {
       console.log(error);
     }
