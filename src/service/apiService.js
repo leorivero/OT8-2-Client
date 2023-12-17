@@ -1,7 +1,7 @@
 
 const axios = require('axios');
 
-const baseURL = 'Aca va la url base del backend';
+const baseURL = 'http://localhost:8080/';
 
 const apiService = axios.create({
     baseURL,
