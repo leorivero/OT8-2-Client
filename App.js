@@ -24,7 +24,7 @@ try{
   res.json(response);
 } catch(error){
   if(error.response.status === 403){
-    res.status(403).json({error: "Puto el que lee"});
+    res.status(403).json({error: "Error 403"});
   } else {
     console.log(error)
   }

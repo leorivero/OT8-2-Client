@@ -15,6 +15,7 @@ buttonLog.addEventListener("click", async () => {
             if(response.status === 200){
                 window.open("http://localhost:3000/", "_self");
                 sessionStorage.setItem("token", "Bearer " + response.data.token);
+                sessionStorage.setItem("userName", response.data.firstName + " " + response.data.lastName);
             } else if (response.status === 403){
                 alert("0 - Debe ingresar Usuario y Clave Correctas");
             }
